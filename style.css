@@ -1,0 +1,304 @@
+@font-face {
+  font-family: "KccChaSaem";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+/* 브라우저 기본 여백 제거 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  cursor: default; /* 전체 마우스 모양을 일반 화살표로 고정 */
+  user-select: none; /* 전체 텍스트 드래그(블록 지정) 방지 */
+}
+
+/* 헤더 전체 컨테이너 수정 */
+.portfolio-header {
+  position: relative;
+  width: 100%;
+  height: 204px;
+  background-color: #90c5cd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /* 💡 아래 코드를 추가하세요 (두께와 색상은 마음대로 조절 가능!) */
+}
+
+/* 좌상단 부채꼴 모양 가상 요소 */
+.portfolio-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 83px;
+  height: 82px;
+  background-color: #c6498f;
+  border-bottom-right-radius: 100%;
+}
+
+/* PARK JIN SOL PORTFOLIO 글씨 */
+h1 {
+  color: #fa286b;
+  font-family: "Abhaya Libre", serif;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  transition: color 0.3s ease;
+}
+h1:hover {
+  color: #e271ac; /* 💡 마우스를 올리면 프로필 카드와 같은 노란색으로 변경 (자주색을 원하면 #c6498f) */
+}
+
+/* 네비게이션 바 우측 하단 고정 */
+.nav-bar {
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+}
+/* 1. 네비게이션 메뉴 목록 (가로 정렬의 핵심) */
+.nav-bar > ul {
+  display: flex; /* 1. 내부 아이템들을 가로로 나란히 정렬 */
+  gap: 16px; /* 2. 버튼과 버튼 사이의 가로 간격 */
+  list-style: none; /* 3. 왼쪽 검은색 점(•) 완벽 제거 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. 각 메뉴 항목 (혹시 모를 여백 초기화) */
+.nav-bar li {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. 링크 텍스트 (기존 버튼 스타일 유지 및 다듬기) */
+.nav-bar a {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #c6498f;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+/* 마우스 올렸을 때 효과 (더 연하고 화사한 스타일) */
+.nav-bar a:hover {
+  /* 💡 원래 색상(#C6498F)보다 더 밝고 연한 핑크빛 자주색으로 변경 */
+  background-color: #e271ac;
+
+  /* 위로 부드럽게 떠오르는 효과 */
+  transform: translateY(-3px);
+
+  /* 💡 그림자도 버튼이 연해진 만큼 더 투명하고 은은하게 변경 (0.4 -> 0.25) */
+  box-shadow: 0 8px 15px rgba(226, 113, 172, 0.25);
+}
+/* 전체 레이아웃 (좌우 2단 분할) */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 80px;
+}
+
+/* 왼쪽 프로필 영역 (고정 너비) */
+.sidebar {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* 왼쪽 사이드바 안의 각 섹션 박스 스타일 */
+.sidebar > section,
+.sidebar > div {
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 오른쪽 콘텐츠 영역 */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* 프로필 카드 */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+/* '박진솔' 이름만 진한 분홍색으로 강조 */
+.name-highlight {
+  color: #e271ac;
+  font-weight: bold;
+}
+
+.profile-img-wrap {
+  width: 240px;
+  height: 310px;
+  background-color: #e6dfa9;
+  margin-bottom: 30px;
+}
+
+.profile-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card h2 {
+  font-family: "Abhaya Libre", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #eab83b;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.job-title {
+  font-size: 18px;
+  color: #777777;
+  margin: 0 0 25px 0;
+  font-weight: 500;
+}
+
+.profile-card::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 2px;
+  background-color: #eab83b;
+  margin-left: 5px;
+  align-self: flex-start;
+}
+
+/* 소개 텍스트 섹션 */
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-text h3 {
+  color: #43b6c8;
+  font-family: "KccChaSaem", serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center; /* 1. 텍스트 자체를 가운데 정렬 */
+  width: 100%; /* 2. 가로 폭을 꽉 채워 기준점을 중앙으로 설정 */
+}
+
+.intro-text blockquote {
+  margin: 0;
+}
+
+/* [오류 수정 부위] 중첩 구조 해결 및 너비 확보 */
+.intro-text blockquote p {
+  color: #5d5d5d;
+  font-family: "KccChaSaem", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6; /* 가독성을 위해 줄간격 살짝 수정 */
+  word-break: keep-all;
+  text-align: justify;
+}
+
+.title-line {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 5px solid #f3c641;
+  font-family: "Arial", sans-serif;
+  color: #555555;
+  font-size: 24px;
+}
+
+/* 연락처 섹션 */
+/* 1. 상자 전체 정렬과 글자 스타일을 한 번에 지정! */
+.contact-info {
+  text-align: center;
+}
+.contact-info h3 {
+  margin-bottom: 20px; /* 불필요한 0들을 지우고 아래 여백만 쏙! */
+  font:
+    bold 22px "Arial",
+    sans-serif; /* 💡 축약 기법: 두께, 크기, 서체를 한 줄로! */
+  color: #333333;
+}
+
+/* 2. ul과 li를 flex 대장님으로 묶어서 한 조로 만들기 */
+.contact-info ul,
+.contact-info li {
+  display: flex;
+  align-items: center;
+}
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-info li {
+  font-size: 15px;
+  color: #666666;
+  gap: 8px;
+}
+
+/* 3. 링크 글자 스타일 축약 */
+.contact-info a {
+  color: inherit; /* 💡 부모(li)의 색상(#666666)을 그대로 물려받아 코드가 줄어들어요! */
+  text-decoration: none;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* 메인 본문 안의 각각의 구역 스타일 */
+.main-content > section {
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.main-content > section > h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #333333;
+}
+
+/* 항목별 구분 점선 */
+.edu-item,
+.exp-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.edu-item:last-child,
+.exp-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
