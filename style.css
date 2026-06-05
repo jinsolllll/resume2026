@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. 웹 브라우저 기본 세팅 & 웹 폰트 정의
+   ========================================================================== */
 @font-face {
   font-family: "KccChaSaem";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2")
@@ -5,17 +8,26 @@
   font-weight: normal;
   font-display: swap;
 }
-/* 브라우저 기본 여백 제거 */
+
 html,
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  cursor: default; /* 전체 마우스 모양을 일반 화살표로 고정 */
-  user-select: none; /* 전체 텍스트 드래그(블록 지정) 방지 */
+  cursor: default;
+  user-select: none;
 }
 
-/* 헤더 전체 컨테이너 수정 */
+/* 글로벌 공통 타이틀 하단 라인 스타일 */
+.title-line {
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 5px solid #f3c641;
+  font-family: "Arial", sans-serif;
+  color: #555555;
+  font-size: 24px;
+}
+
 .portfolio-header {
   position: relative;
   width: 100%;
@@ -27,7 +39,7 @@ body {
   box-sizing: border-box;
 }
 
-/* 좌상단 부채꼴 모양 가상 요소 */
+/* 좌상단 부채꼴 모양 포인트 디자인 */
 .portfolio-header::before {
   content: "";
   position: absolute;
@@ -38,7 +50,40 @@ body {
   background-color: #c6498f;
   border-bottom-right-radius: 100%;
 }
-/* 1. 타이핑 애니메이션 (글자가 서서히 나타남) */
+
+/* 헤더 메인 타이틀 (타이핑 효과 포함) */
+h1 {
+  color: #fa286b;
+  font-family: "Abhaya Libre", serif;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  transition: color 0.3s ease;
+
+  /* 중앙 정렬 세팅 */
+  margin: 0 auto;
+  text-align: center;
+  width: 0;
+  max-width: fit-content;
+
+  /* 타이핑 효과 설정 */
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  border-right: 3px solid #fa286b; /* 깜빡이는 타자기 커서 선 */
+
+  /* 애니메이션 실행: 23글자 기준 2초 작동 */
+  animation:
+    typing 2s steps(23, end) infinite,
+    blink-caret 0.75s step-end infinite;
+}
+
+h1:hover {
+  color: #e271ac;
+}
+
+/* 🎬 타이핑 관련 애니메이션 정의 */
 @keyframes typing {
   from {
     width: 0;
@@ -48,7 +93,6 @@ body {
   }
 }
 
-/* 2. 커서 깜빡임 애니메이션 (글자 끝 바가 반짝임) */
 @keyframes blink-caret {
   from,
   to {
@@ -59,63 +103,25 @@ body {
   }
 }
 
-/* 3. 메인 타이틀 스타일 (기존 스타일에 중앙 정렬+타이핑 추가) */
-h1 {
-  /* [기존 디자인 스타일] */
-  color: #fa286b;
-  font-family: "Abhaya Libre", serif;
-  font-size: 70px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  transition: color 0.3s ease;
-
-  /* [중앙 정렬을 위한 핵심 추가 수정] */
-  margin: 0 auto; /* 박스 자체를 화면 중앙으로 이동 */
-  text-align: center; /* 글자 텍스트를 가운데 정렬 */
-  width: 0; /* 애니메이션 시작 전 너비를 0으로 설정 */
-  max-width: fit-content; /* 글자 길이에 딱 맞게 가로폭 제한 (중앙 정렬 유지 필수) */
-
-  /* [타이핑 효과 필수 속성] */
-  overflow: hidden; /* 영역을 벗어나는 글자 숨김 */
-  white-space: nowrap; /* 글자가 아래로 줄바꿈되지 않게 고정 */
-  letter-spacing: 0.05em; /* 자간 설정 */
-
-  /*  [애니메이션 실행] 23글자 기준 2초 동안 타이핑 실행 */
-  animation:
-    typing 2s steps(23, end) forwards,
-    blink-caret 0.75s step-end infinite;
-
-  /* 글자 오른쪽에 깜빡이는 커서 선 표시 */
-  border-right: 3px solid #fa286b;
-}
-
-/* 4. 마우스 올렸을 때 색상 변경 */
-h1:hover {
-  color: #e271ac;
-}
-/* 네비게이션 바 우측 하단 고정 */
 .nav-bar {
   position: absolute;
   right: 40px;
   bottom: 20px;
 }
-/* 1. 네비게이션 메뉴 목록 (가로 정렬의 핵심) */
+
 .nav-bar > ul {
-  display: flex; /* 1. 내부 아이템들을 가로로 나란히 정렬 */
-  gap: 16px; /* 2. 버튼과 버튼 사이의 가로 간격 */
-  list-style: none; /* 3. 왼쪽 검은색 점(•) 완벽 제거 */
+  display: flex;
+  gap: 16px;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* 2. 각 메뉴 항목 (혹시 모를 여백 초기화) */
 .nav-bar li {
   margin: 0;
   padding: 0;
 }
 
-/* 3. 링크 텍스트 (기존 버튼 스타일 유지 및 다듬기) */
 .nav-bar a {
   display: inline-block;
   text-decoration: none;
@@ -126,19 +132,14 @@ h1:hover {
   font-weight: bold;
   font-size: 1rem;
   transition: all 0.3s ease;
-}
-/* 마우스 올렸을 때 효과 (더 연하고 화사한 스타일) */
+} /* 원본 코드에서 누락되어 하단 전체를 먹통으로 만들던 중괄호 닫기 해결! */
+
 .nav-bar a:hover {
-  /* 💡 원래 색상(#C6498F)보다 더 밝고 연한 핑크빛 자주색으로 변경 */
   background-color: #e271ac;
-
-  /* 위로 부드럽게 떠오르는 효과 */
   transform: translateY(-3px);
-
-  /* 💡 그림자도 버튼이 연해진 만큼 더 투명하고 은은하게 변경 (0.4 -> 0.25) */
   box-shadow: 0 8px 15px rgba(226, 113, 172, 0.25);
 }
-/* 전체 레이아웃 (좌우 2단 분할) */
+
 .container {
   display: flex;
   justify-content: center;
@@ -148,7 +149,7 @@ h1:hover {
   padding: 0 80px;
 }
 
-/* 왼쪽 프로필 영역 (고정 너비) */
+/* 왼쪽 사이드바 영역 */
 .sidebar {
   width: 380px;
   flex-shrink: 0;
@@ -157,7 +158,7 @@ h1:hover {
   gap: 50px;
 }
 
-/* 왼쪽 사이드바 안의 각 섹션 박스 스타일 */
+/* 사이드바 내부 각 컴포넌트 상자 스타일 */
 .sidebar > section,
 .sidebar > div {
   background-color: #ffffff;
@@ -167,7 +168,7 @@ h1:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* 오른쪽 콘텐츠 영역 */
+/* 오른쪽 메인 콘텐츠 영역 */
 .main-content {
   flex-grow: 1;
   display: flex;
@@ -175,17 +176,12 @@ h1:hover {
   gap: 50px;
 }
 
-/* 프로필 카드 */
+/* [프로필 카드] */
 .profile-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-/* '박진솔' 이름만 진한 분홍색으로 강조 */
-.name-highlight {
-  color: #e271ac;
-  font-weight: bold;
 }
 
 .profile-img-wrap {
@@ -193,12 +189,20 @@ h1:hover {
   height: 310px;
   background-color: #e6dfa9;
   margin-bottom: 30px;
+  overflow: hidden; /* 호버 시 이미지가 카드 테두리 밖으로 넘치지 않게 가림 */
+  border-radius: 4px;
 }
 
 .profile-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+.profile-img-wrap img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .profile-card h2 {
@@ -217,6 +221,11 @@ h1:hover {
   font-weight: 500;
 }
 
+.name-highlight {
+  color: #e271ac;
+  font-weight: bold;
+}
+
 .profile-card::after {
   content: "";
   display: block;
@@ -227,92 +236,47 @@ h1:hover {
   align-self: flex-start;
 }
 
-/* 소개 텍스트 섹션 */
-
-.intro-text {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.intro-text h3 {
-  color: #43b6c8;
-  font-family: "KccChaSaem", serif;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-align: center; /* 1. 텍스트 자체를 가운데 정렬 */
-  width: 100%; /* 2. 가로 폭을 꽉 채워 기준점을 중앙으로 설정 */
-}
-
-.intro-text blockquote {
-  margin: 0;
-}
-
-/* [오류 수정 부위] 중첩 구조 해결 및 너비 확보 */
-.intro-text blockquote p {
-  color: #5d5d5d;
-  font-family: "KccChaSaem", sans-serif;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.6; /* 가독성을 위해 줄간격 살짝 수정 */
-  word-break: keep-all;
-  text-align: justify;
-}
-
-.title-line {
-  display: inline-block;
-  padding-bottom: 8px;
-  border-bottom: 5px solid #f3c641;
-  font-family: "Arial", sans-serif;
-  color: #555555;
-  font-size: 24px;
-}
-
-/* 연락처 섹션 */
-/* 1. 상자 전체 정렬과 글자 스타일을 한 번에 지정! */
+/* [연락처 정보] */
 .contact-info {
   text-align: center;
 }
+
 .contact-info h3 {
-  margin-bottom: 20px; /* 불필요한 0들을 지우고 아래 여백만 쏙! */
+  margin-bottom: 20px;
   font:
     bold 22px "Arial",
-    sans-serif; /* 💡 축약 기법: 두께, 크기, 서체를 한 줄로! */
+    sans-serif;
   color: #333333;
 }
 
-/* 2. ul과 li를 flex 대장님으로 묶어서 한 조로 만들기 */
-.contact-info ul,
-.contact-info li {
-  display: flex;
-  align-items: center;
-}
 .contact-info ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .contact-info li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 15px;
   color: #666666;
   gap: 8px;
 }
 
-/* 3. 링크 글자 스타일 축약 */
 .contact-info a {
-  color: inherit; /* 💡 부모(li)의 색상(#666666)을 그대로 물려받아 코드가 줄어들어요! */
+  color: inherit;
   text-decoration: none;
 }
+
 .contact-info a:hover {
   text-decoration: underline;
 }
 
-/* 메인 본문 안의 각각의 구역 스타일 */
+/* 공통 섹션 스타일 블록 */
 .main-content > section {
   background-color: #ffffff;
   border: 1px solid #e1e1e1;
@@ -328,7 +292,40 @@ h1:hover {
   color: #333333;
 }
 
-/* 항목별 구분 점선 */
+/* [자기 소개 - Intro] */
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-text h3 {
+  color: #43b6c8;
+  font-family: "KccChaSaem", serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  width: 100%;
+}
+
+.intro-text blockquote {
+  margin: 0;
+}
+
+.intro-text blockquote p {
+  color: #5d5d5d;
+  font-family: "KccChaSaem", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  word-break: keep-all;
+  text-align: justify;
+}
+
+/* [학력 및 경력 아이템 공통 세팅] */
 .edu-item,
 .exp-item {
   padding-bottom: 20px;
@@ -341,4 +338,17 @@ h1:hover {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+/* [프로젝트 썸네일 이미지 영역] */
+.project-image a img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.project-image:hover {
+  background-color: #eab83b;
 }
