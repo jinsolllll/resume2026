@@ -349,6 +349,7 @@ h1:hover {
   display: block;
 }
 
-.project-image:hover {
-  background-color: #eab83b;
+.project-image a img :hover {
+  border-color: #ffc7bb;
+  box-shadow: 0 24px 50px rgb(0 0 0 / 10%);
 }
