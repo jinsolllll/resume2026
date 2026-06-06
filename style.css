@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. 웹 브라우저 기본 세팅 & 웹 폰트 정의
-   ========================================================================== */
 @font-face {
   font-family: "KccChaSaem";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2")
@@ -340,7 +337,6 @@ h1:hover {
   padding-bottom: 0;
 }
 
-/* [프로젝트 썸네일 이미지 영역] */
 .project-image a img {
   width: 200px;
   height: auto;
@@ -352,4 +348,60 @@ h1:hover {
 .project-image a img :hover {
   border-color: #ffc7bb;
   box-shadow: 0 24px 50px rgb(0 0 0 / 10%);
+}
+
+
+@media (min-width: 768px) {
+
+  .portfolio-header {
+    min-height: 204px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .nav-bar {
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    margin-top: 0;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 70px;
+  }
+
+
+  .container {
+    flex-direction: row;
+    gap: 80px;
+    padding: 0 80px;
+  }
+
+
+  .sidebar {
+    width: 380px;
+  }
+
+  .profile-card::after {
+    margin-left: 5px;
+    align-self: flex-start;
+  }
+
+
+  .project-image a img {
+    width: 200px;
+    margin: 0;
+  }
 }
